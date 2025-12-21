@@ -51,7 +51,7 @@
                                 <p class="text-sm font-bold leading-normal">Tableau de bord</p>
                             </a>
                             
-                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ request()->routeIs('modules.*') ? 'bg-primary/10 border-l-4 border-primary text-primary' : 'hover:bg-gray-50 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400' }}" href="{{ route('modules.index') }}">
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ request()->routeIs('modules.*') ? 'bg-primary/10 border-l-4 border-primary text-primary' : 'hover:bg-gray-50 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400' }}" href="{{ route('filieres_modules') }}">
                                 <span class="material-symbols-outlined">school</span>
                                 <p class="text-sm font-medium leading-normal">Modules & Filières</p>
                             </a>
@@ -83,7 +83,7 @@
             </aside>
 
             <main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-4 lg:p-10 scroll-smooth">
-                {{ $slot }}
+                @yield('content')
             </main>
         </div>
     </div>

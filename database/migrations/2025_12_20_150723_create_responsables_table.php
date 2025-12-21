@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('filieres', function (Blueprint $table) {
+        Schema::create('responsables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained()->cascadeOnDelete();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->string('level')->nullable();    // Licence 1, Master 2, etc.
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique()->nullable();
+            $table->string('grade')->nullable();   // Pr., Dr., Mme., etc.
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('filieres');
+        Schema::dropIfExists('responsables');
     }
 };

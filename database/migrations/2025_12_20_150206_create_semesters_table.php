@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('filieres', function (Blueprint $table) {
+        Schema::create('semesters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('department_id')->constrained()->cascadeOnDelete();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->string('level')->nullable();    // Licence 1, Master 2, etc.
+            $table->string('code')->unique();      // S1, S2, S3...
+            $table->string('name');                // Semestre 1, Printemps 2024...
+            $table->unsignedInteger('order')->default(1); // ordre d’affichage
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('filieres');
+        Schema::dropIfExists('semesters');
     }
 };

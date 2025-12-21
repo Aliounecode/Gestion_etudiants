@@ -17,7 +17,7 @@ return new class extends Migration
     $table->string('first_name');
     $table->string('last_name');
     $table->foreignId('filiere_id')->constrained()->onDelete('cascade');
-    $table->string('group')->nullable(); // Groupe A, B...
+    $table->string('group'); // Groupe A, B...
     $table->timestamps();
 });
     }

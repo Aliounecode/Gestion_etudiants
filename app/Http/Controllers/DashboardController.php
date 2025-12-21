@@ -15,7 +15,7 @@ class DashboardController extends Controller
         // On récupère les vraies statistiques (même si c'est 0 pour l'instant)
         $stats = [
             'students_count' => Student::count(),
-            'modules_active' => Module::where('is_active', true)->count(),
+            'modules_active' => Module::where('status', true)->count(),
             'scans_count' => Scan::count(),
             'pending_grades' => Grade::where('status', 'pending')->count(),
         ];

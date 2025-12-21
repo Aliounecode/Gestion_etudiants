@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
-    $table->id();
-    $table->string('name'); // ex: Informatique, Mathématiques
-    $table->string('code')->unique(); // ex: INFO, MATH
-    $table->timestamps();
-});
+      Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('code')->unique();
+            $table->string('name');
+            $table->string('head_of_department')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
     }
 
     /**
