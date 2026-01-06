@@ -37,8 +37,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // ->except(['index']) car l’index est désormais /filieres-modules pour coller à la maquette. [file:20]
 
     // Tâche COLLABORATEUR : Importation
-    Route::get('/import', [ImportController::class, 'index'])->name('import.index');
-    Route::post('/import', [ImportController::class, 'store'])->name('import.store');
+    Route::get('/rapports', [ExportController::class, 'index'])->name('rapports.index');
+    Route::post('/rapports/export/pdf', [ExportController::class, 'exportPdf'])->name('rapports.export.pdf');
 
     // Tâche COLLABORATEUR : Validation
     Route::resource('grades', GradeController::class);

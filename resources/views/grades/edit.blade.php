@@ -1,13 +1,15 @@
 @extends('layouts.export')
 
-@section('title', 'Nouvelle note')
+@section('title', 'Modifier une note')
 
 @section('content')
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-            <h1 class="h4 mb-1">Nouvelle note</h1>
-            <p class="text-muted mb-0">Créer une note pour un étudiant et un module.</p>
+            <h1 class="h4 mb-1">Modifier une note</h1>
+            <p class="text-muted mb-0">
+                Met à jour la note pour un étudiant et un module.
+            </p>
         </div>
         <a href="{{ route('grades.index') }}" class="btn btn-outline-secondary btn-sm">
             ⬅ Retour à la liste
@@ -26,8 +28,13 @@
                 </div>
             @endif
 
-            <form action="{{ route('grades.store') }}" method="POST" class="row g-3">
+            <form
+                action="{{ route('grades.update', $grade) }}"
+                method="POST"
+                class="row g-3"
+            >
                 @csrf
+                @method('PUT')
 
                 <div class="col-md-6">
                     <label for="student_id" class="form-label">Étudiant</label>
@@ -41,9 +48,12 @@
                         @foreach($students as $student)
                             <option
                                 value="{{ $student->id }}"
-                                @selected(old('student_id') == $student->id)
+                                @selected(old('student_id', $grade->student_id) == $student->id)
                             >
-                                {{ $student->name }} ({{ $student->matricule ?? 'N/A' }})
+                                {{ $student->first_name }} {{ $student->last_name }}
+                                @if($student->matricule)
+                                    ({{ $student->matricule }})
+                                @endif
                             </option>
                         @endforeach
                     </select>
@@ -64,7 +74,7 @@
                         @foreach($modules as $module)
                             <option
                                 value="{{ $module->id }}"
-                                @selected(old('module_id') == $module->id)
+                                @selected(old('module_id', $grade->module_id) == $module->id)
                             >
                                 {{ $module->code ?? '' }} - {{ $module->name }}
                             </option>
@@ -84,7 +94,7 @@
                         max="20"
                         name="score_exam"
                         id="score_exam"
-                        value="{{ old('score_exam') }}"
+                        value="{{ old('score_exam', $grade->score_exam) }}"
                         class="form-control @error('score_exam') is-invalid @enderror"
                     >
                     @error('score_exam')
@@ -101,7 +111,7 @@
                         max="20"
                         name="score_cc"
                         id="score_cc"
-                        value="{{ old('score_cc') }}"
+                        value="{{ old('score_cc', $grade->score_cc) }}"
                         class="form-control @error('score_cc') is-invalid @enderror"
                     >
                     @error('score_cc')
@@ -115,7 +125,7 @@
                         Annuler
                     </a>
                     <button type="submit" class="btn btn-primary">
-                        Enregistrer la note
+                        Mettre à jour la note
                     </button>
                 </div>
             </form>

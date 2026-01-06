@@ -17,6 +17,10 @@ class Jury extends Model
         'meeting_at',
         'status',
     ];
+    protected $casts = [
+        'meeting_at' => 'datetime',
+    ];
+
 
     // Many-to-many : un jury concerne plusieurs étudiants
     public function students()

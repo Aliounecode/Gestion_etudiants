@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grades', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('student_id')->constrained()->onDelete('cascade');
-    $table->foreignId('module_id')->constrained()->onDelete('cascade');
-    $table->decimal('score_exam', 5, 2)->nullable();
-    $table->decimal('score_cc', 5, 2)->nullable();
-    $table->decimal('average', 5, 2)->nullable();
-    $table->string('status')->default('pending'); // pending, validated, rejected
-    $table->timestamps();
-});
+            $table->id();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('module_id')->constrained()->onDelete('cascade');
+            $table->decimal('score_exam', 5, 2)->nullable();
+            $table->decimal('score_cc', 5, 2)->nullable();
+            $table->decimal('average', 5, 2)->nullable();
+            $table->string('status')->default('pending'); // pending, validated, rejected
+            $table->timestamps();
+        });
     }
 
     /**

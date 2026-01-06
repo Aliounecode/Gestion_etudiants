@@ -12,7 +12,7 @@
     </div>
     
     <div class="hidden sm:flex">
-        <a href="{{ route('import.index') }}"
+        <a href="{{ route('rapports.index') }}"
            class="flex items-center justify-center gap-2 rounded-lg bg-primary h-10 px-6 text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors">
             <span class="material-symbols-outlined text-[20px]">add</span>
             <span>Nouveau Scan</span>
@@ -144,7 +144,7 @@
                     Actions Rapides
                 </h3>
                 <div class="grid grid-cols-1 gap-3">
-                    <a href="{{ route('import.index') }}"
+                    <a href="{{ route('rapports.index') }}"
                        class="group flex items-center p-4 bg-primary text-white rounded-xl shadow-lg shadow-blue-200 dark:shadow-none hover:shadow-xl hover:bg-blue-700 transition-all">
                         <div class="bg-white/20 p-3 rounded-lg mr-4 group-hover:scale-110 transition-transform">
                             <span class="material-symbols-outlined text-[24px]">add_a_photo</span>

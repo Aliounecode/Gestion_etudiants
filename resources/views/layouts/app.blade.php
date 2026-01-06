@@ -56,7 +56,7 @@
                                 <p class="text-sm font-medium leading-normal">Modules & Filières</p>
                             </a>
 
-                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ request()->routeIs('import.*') ? 'bg-primary/10 border-l-4 border-primary text-primary' : 'hover:bg-gray-50 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400' }}" href="{{ route('import.index') }}">
+                            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg {{ request()->routeIs('rapports.*') ? 'bg-primary/10 border-l-4 border-primary text-primary' : 'hover:bg-gray-50 dark:hover:bg-gray-800 text-[#4c669a] dark:text-gray-400' }}" href="{{ route('rapports.index') }}">
                                 <span class="material-symbols-outlined">upload_file</span>
                                 <p class="text-sm font-medium leading-normal">Import / Scan</p>
                             </a>

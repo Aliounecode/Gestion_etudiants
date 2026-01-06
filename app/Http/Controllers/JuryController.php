@@ -23,7 +23,7 @@ class JuryController extends Controller
             ->pluck('code'); // collection type ["S1","S2", ...]
 
             $jurys = Jury::latest()->paginate(20);
-        return view('jurys.create', compact('students', 'semesters'));
+        return view('jurys.index', compact('students', 'semesters', 'jurys'));
     }
 
     public function create()
